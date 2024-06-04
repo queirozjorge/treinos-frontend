@@ -1,0 +1,24 @@
+<main>
+    <section class="form-section">
+        <img src="assets/img/logo.png" width="300" height="105"/>
+        <h2>{{ txt }}</h2>
+        <ng-content></ng-content>
+        <div class="btn-wrapper">
+            <button 
+                class="btn-primary" 
+                (click)="submit()"
+                [disabled]="disablePrimaryBtn"
+                >{{ primaryBtnText }}</button>
+            <div class="divider">
+                <div></div>
+                <span>ou</span>
+                <div></div>
+            </div>
+            <button class="btn-secondary" (click)="navigate()">{{ secondaryBtnText }}</button>
+        </div>
+    </section>
+    <section class="main-section">
+        <h1>Mova - se</h1>
+        <img src="assets/img/main-illustrator.png" width="400" height="400"/>
+    </section>
+</main>

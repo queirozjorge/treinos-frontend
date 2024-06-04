@@ -1,0 +1,53 @@
+<app-default-login-layout
+    txt="Crie sua conta agora"
+    primaryBtnText="Cadastrar-se agora"
+    secondaryBtnText="Entrar agora"
+    (submit)="submit()"
+    (navigate)="navigate()"
+    [disablePrimaryBtn]="!signupForm.valid"
+>
+    <form [formGroup]="signupForm">
+        <app-primary-input
+            formControlName="name"
+            inputName="name"
+            type="text"
+            label="Nome"
+            placeholder="João da Silva"
+        >
+            <img src="/assets/img/name.svg"/>
+        </app-primary-input>
+        <app-primary-input
+            formControlName="email"
+            inputName="email"
+            type="email"
+            label="Email"
+            placeholder="email@email.com"
+        >
+            <img src="/assets/img/email-icon.svg"/>
+        </app-primary-input>
+        <app-primary-input
+            formControlName="birthDate"
+            inputName="birthDate"
+            type="date"
+            label="Data de nascimento"
+        >
+            <img src="/assets/img/date.svg"/>
+        </app-primary-input>
+        <app-primary-input
+            formControlName="password"
+            inputName="password"
+            type="password"
+            label="Sua senha"
+        >
+        <img src="/assets/img/password-icon.svg"/>
+        </app-primary-input>
+        <app-primary-input
+            formControlName="passwordConfirm"
+            inputName="passwordConfirm"
+            type="password"
+            label="Confirme sua senha"
+        >
+        <img src="/assets/img/password-icon.svg"/>
+        </app-primary-input>
+    </form>
+</app-default-login-layout>

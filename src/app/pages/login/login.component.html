@@ -1,0 +1,29 @@
+<app-default-login-layout
+    txt="Entre na sua conta"
+    primaryBtnText="Entrar agora"
+    secondaryBtnText="Cadastre-se"
+    (submit)="submit()"
+    (navigate)="navigate()"
+    [disablePrimaryBtn]="!loginForm.valid"
+>
+    <form [formGroup]="loginForm">
+        <app-primary-input
+            formControlName="email"
+            inputName="email"
+            type="email"
+            label="Email"
+            placeholder="email@email.com"
+        >
+            <img src="/assets/img/email-icon.svg"/>
+        </app-primary-input>
+        <app-primary-input
+            formControlName="password"
+            inputName="password"
+            type="password"
+            label="Sua senha"
+        >
+        <img src="/assets/img/password-icon.svg"/>
+    </app-primary-input>
+    <span>Esqueceu sua senha?</span>
+    </form>
+</app-default-login-layout>
