@@ -5,11 +5,15 @@ form {
     display: flex;
     flex-direction: column;
     margin-bottom: 2em;
-
-    span {
-        font-size: 14px;
-        text-decoration: underline;
-        color: $secondary-color;
-        text-align: end;
-    }
 }
+
+.hint-message {
+    position: fixed;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    white-space: nowrap;
+    font-size: 12px;
+  }

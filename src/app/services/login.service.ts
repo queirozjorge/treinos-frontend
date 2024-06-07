@@ -17,6 +17,10 @@ export class LoginService {
         tap((value) => {
             sessionStorage.setItem("auth-token", value.token)
             sessionStorage.setItem("username", value.name)
+        }),
+        catchError(error => {
+            const errorMessage = error.error && error.error.message ? error.error.message : "Erro desconhecido. Por favor, tente novamente mais tarde";
+            return throwError(() => new Error(errorMessage));
         })
         )
     }
