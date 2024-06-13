@@ -14,14 +14,13 @@ export class LoginService {
 
     login(email: string, password: string) {
         return this.httpClient.post<LoginResponse>(`${this.apiUrl}/login`, {email, password}).pipe( 
-        tap((value) => {
-            sessionStorage.setItem("auth-token", value.token)
-            sessionStorage.setItem("username", value.name)
-        }),
-        catchError(error => {
-            const errorMessage = error.error && error.error.message ? error.error.message : "Erro desconhecido. Por favor, tente novamente mais tarde";
-            return throwError(() => new Error(errorMessage));
-        })
+            tap((value) => {
+                sessionStorage.setItem("auth-token", value.token)
+                sessionStorage.setItem("username", value.name)
+            }),
+            catchError(error => {    
+                return throwError(() => new Error("Falha ao realizar login. Verifique e Tente novamente"));
+            })
         )
     }
 

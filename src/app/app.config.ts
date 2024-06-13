@@ -6,6 +6,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
+import { provideSpinnerConfig } from 'ngx-spinner';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,9 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     provideToastr(),
     provideAnimations(),
-    provideEnvironmentNgxMask()
+    provideEnvironmentNgxMask(),
+    provideSpinnerConfig({
+      type: 'ball-clip-rotate-pulse'
+    })
   ]
 };

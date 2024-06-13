@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-signup',
@@ -26,7 +27,8 @@ export class SignupComponent {
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private loadingService: LoadingService
   ) {
     this.signupForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -76,7 +78,7 @@ export class SignupComponent {
   }
 
   navigate() {
-    this.router.navigate(["login"])
+    this.loadingService.loadRouter("login")
   }
 
   showHint() {

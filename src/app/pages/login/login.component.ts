@@ -5,6 +5,7 @@ import { PrimaryInputComponent } from '../../components/primary-input/primary-in
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private loadingService: LoadingService
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,8 +33,8 @@ export class LoginComponent {
   submit() {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
       next: () => { 
-        this.toastService.success("Login realizado com sucesso!")
-        this.router.navigate(["board"]);
+        this.toastService.success("Login realizado com sucesso!");
+        this.loadingService.loadRouter("board");
       },
       error: (err) => {
         this.toastService.error(err.message);
@@ -41,7 +43,7 @@ export class LoginComponent {
   }
 
   navigate() {
-    this.router.navigate(["signup"])
+    this.loadingService.loadRouter("signup");
   }
 
   recoverPassword() {
