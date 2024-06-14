@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginResponse } from '../types/login-response.type';
 import { catchError, tap, throwError } from 'rxjs';
@@ -19,20 +19,32 @@ export class LoginService {
                 sessionStorage.setItem("username", value.name)
             }),
             catchError(error => {    
-                return throwError(() => new Error("Falha ao realizar login. Verifique e Tente novamente"));
+                return throwError(() => new Error("Falha ao realizar login. Tente novamente mais tarde"));
             })
         )
     }
 
     signup(nome: string, password: string, email: string, dataNascimento: string) {
-        console.log(nome + " " + password + " " + email + " " + dataNascimento)
         return this.httpClient.post<LoginResponse>(`${this.apiUrl}/usuario/cadastrar`, {nome, password, email, dataNascimento})
             .pipe(
                 catchError(error => {
-                    const errorMessage = error.error && error.error.message ? error.error.message : "Erro desconhecido. Por favor, tente novamente mais tarde";
-                    return throwError(() => new Error(errorMessage));
+                    return throwError(() => new Error("Falha ao realizar cadastro. Tente novamente mais tarde"));
                 })
             );
+    }
+
+    recoverPassword(email: string, link: string) {
+
+        let params = new HttpParams()
+        .set('email', email)
+        .set('link', link);
+
+        return this.httpClient.get(`${this.apiUrl}/recuperar-senha`, {params})
+            .pipe(
+                catchError(error => {
+                    return throwError(() => new Error("Falha ao enviar email. Tente novamente mais tarde"));
+                })
+            )
     }
 
 }

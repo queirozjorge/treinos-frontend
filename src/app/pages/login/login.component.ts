@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { DefaultLoginLayoutComponent } from '../../components/default-login-layout/default-login-layout.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
-import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../services/loading.service';
@@ -19,7 +18,6 @@ export class LoginComponent {
   loginForm!: FormGroup;
 
   constructor(
-    private router: Router,
     private loginService: LoginService,
     private toastService: ToastrService,
     private loadingService: LoadingService
@@ -43,11 +41,11 @@ export class LoginComponent {
   }
 
   navigate() {
-    this.loadingService.loadRouter("signup");
+    this.loadingService.loadRouter("login");
   }
 
   recoverPassword() {
-    alert("recuperar")
+    this.loadingService.loadRouter("recover-password");
   }
 
 }
