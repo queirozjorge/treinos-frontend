@@ -41,7 +41,7 @@ export class LoginComponent {
   }
 
   navigate() {
-    this.loadingService.loadRouter("login");
+    this.loadingService.loadRouter("signup");
   }
 
   recoverPassword() {

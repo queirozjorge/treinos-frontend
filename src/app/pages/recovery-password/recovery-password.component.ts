@@ -42,6 +42,6 @@ export class RecoveryPasswordComponent {
   }
 
   navigate() {
-    this.loadingService.loadRouter("signup");
+    this.loadingService.loadRouter("login");
   }
 }
