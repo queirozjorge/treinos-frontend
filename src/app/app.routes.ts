@@ -7,6 +7,11 @@ import { RecoveryPasswordComponent } from './pages/recovery-password/recovery-pa
 
 export const routes: Routes = [
     {
+        path: "",
+        redirectTo: "login",
+        pathMatch: "full"
+    },
+    {
         path: "login",
         component: LoginComponent
     },
